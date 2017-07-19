@@ -1,0 +1,129 @@
+
+import "ocidl.idl";
+
+#include <olectl.h>
+
+[ 
+   uuid(A64AB7AF-8A26-4f07-8877-56FE99570315),
+   helpfile("PdfEnabler.hlp"),
+   helpstring("InnoVisioNate PDF Enabler"), 
+   lcid(0x0), 
+   version(1.0)
+] 
+
+library PdfEnabler { 
+
+   importlib(STDOLE_TLB); 
+   importlib(STDTYPE_TLB);
+
+   [uuid(A64AB7AF-8A26-4f07-8877-56FE99570316),
+      helpstring("PdfEnabler Page Interface"),
+      dual,oleautomation,nonextensible,pointer_default(unique)] 
+
+   interface IPdfPage : IDispatch {
+
+      HRESULT AddStream(BYTE *pData,long dataSize,long identifier);
+
+      HRESULT PageSize(RECT *pRect);
+
+      HRESULT Rotation(double *pRotation);
+
+      HRESULT AddImage(double inchesFromLeft,double inchesFromTop,double scaleX,double scaleY,HBITMAP bitmapHandle);
+
+      HRESULT DisplayedPageSize(RECT *pRect);
+
+      HRESULT AddImageFromFile(double inchesFromLeft,double inchesFromTop,double scaleX,double scaleY,BSTR bstrFileName);
+      
+      HRESULT AddCenteredImageFromFile(double inchesFromLeft,double inchesFromTop,BSTR bstrFileName);
+
+      HRESULT AddSizedImageFromFile(double inchesFromLeft,double inchesFromTop,double widthInInches,double heightInInches,BSTR bstrFileName);
+
+      [propget,id(1)] HRESULT PageNumber([out,retval] long *pPageNumber);
+
+      HRESULT ParseText(HDC hdc,RECT *prcWindowsClip,void *pvIPostScriptTakeText);
+
+      HRESULT GetNativePdfPage(void **ppPdfPage);
+
+      HRESULT GetLastError(char **ppszError);
+
+      HRESULT AddBinaryObjectFromFile(BSTR objectName,BSTR fileName);
+
+      HRESULT GetBinaryObjectToFile(BSTR objectName,BSTR fileName);
+
+   };
+
+   [uuid(A64AB7AF-8A26-4f07-8877-56FE99570317),
+      helpstring("PdfEnabler Document Interface"),
+      dual,oleautomation,nonextensible,pointer_default(unique)] 
+
+   interface IPdfDocument : IDispatch {
+
+      HRESULT Open(BSTR bstrFileName,[in/*,optional,defaultvalue(0)*/] BSTR bstrUserPassword,[in/*,optional,defaultvalue(0)*/] BSTR bstrOwnerPassword);
+
+      HRESULT Page(long pageNumber,[optional,defaultvalue(0)] char *pszPageLabel,[out,retval] IPdfPage **ppPage_DoNotAddRef_Or_Release);
+
+      HRESULT PageFromLabel(char *pszPageLabel,[out,retval] long *pPageIndex);
+
+      HRESULT LabelFromPage(long pageNumber,long stringSize,[out,retval] char *pszPageLabel);
+
+      HRESULT Write(BSTR bstrOutputName);
+
+      HRESULT QueryInfoSize([out,retval] long *pInfoSize);
+
+      HRESULT QueryInfo([out,retval] char *pszBuffer);
+
+      HRESULT WriteUncompressed(BSTR bstrOutputName);
+
+      HRESULT get_PageCount([out,retval] long *pPageCount);
+
+      HRESULT UpdateNamedCount([in] BSTR name,[in] long currentCount,[in] long maxCount);
+
+      HRESULT get_NamedCount([in] BSTR name,[out,retval] long *pCount);
+
+      HRESULT RemoveLastAddedStream();
+
+      HRESULT RemoveIndexedAddedStream(long index);
+
+      HRESULT EraseLastAddedStream();
+
+      HRESULT EraseIndexedAddedStream(long index);
+
+      HRESULT RemoveStreamByID(long identifier);
+
+      HRESULT get_RemovableStreams([out,retval] long *pCount);
+
+      HRESULT Seal();
+
+      HRESULT FirstPage([out] IPdfPage **ppIPage);
+
+      HRESULT LastPage([out] IPdfPage **ppIPage);
+
+      HRESULT AddPage([out] long *pPageNumber,[out] IPdfPage **ppIPage);
+
+      HRESULT ReplicateStream(long streamNumber,long newPage,POINT *pSource,POINT *pOffset,double scaleX,double scaleY);
+
+      HRESULT ParseText(long pageNumber,HDC hdc,RECT *prcWindowsClip,void *pvIPostScriptTakeText);
+
+      HRESULT GetLastError(char **ppszError);
+
+      HRESULT ExtractFonts(char *pszToDirectory,char **ppszFilesRootNameList);
+
+   };
+
+   [uuid(A64AB7AF-8A26-4f07-8877-56FE99570318),
+      helpstring("PdfEnabler Control Interface"),
+      dual,oleautomation,nonextensible,pointer_default(unique)] 
+
+   interface IPdfEnabler : IDispatch {
+
+      HRESULT Document([out,retval] IPdfDocument **ppDocument);
+
+   };
+
+   [uuid(A64AB7AF-8A26-4f07-8877-56FE99570319),
+      helpstring("PdfEnabler Object")]
+      coclass PdfEnabler {
+      [default] interface IPdfEnabler;
+   };
+
+};

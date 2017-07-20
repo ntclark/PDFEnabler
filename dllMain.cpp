@@ -14,9 +14,6 @@
 
 #define DEFINE_DATA
 
-#include "Properties_i.h"
-#include "Properties_i.c"
-
 #include "pdfEnabler.h"
 
    OLECHAR wstrModuleName[256];

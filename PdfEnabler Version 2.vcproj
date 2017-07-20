@@ -48,13 +48,13 @@
 				TargetEnvironment="1"
 				TypeLibraryName="\Common\Include\PdfEnabler.tlb"
 				OutputDirectory="$(SolutionDir)"
-				HeaderFileName="\Common\include\PdfEnabler_i.h"
-				InterfaceIdentifierFileName="\Common\include\PdfEnabler_i.c"
+				HeaderFileName="$(ProjectDir)..\Common\include\PdfEnabler_i.h"
+				InterfaceIdentifierFileName="$(ProjectDir)..\Common\include\PdfEnabler_i.c"
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="D:\Common\include\pdfEnabler"
+				AdditionalIncludeDirectories="$(ProjectDir)..\Common\include\pdfEnabler"
 				PreprocessorDefinitions="DLLEXPORT=__declspec(dllexport);WIN32;DEBUG;_DEBUG;_WINDOWS;_USRDLL"
 				ExceptionHandling="1"
 				RuntimeLibrary="1"
@@ -149,14 +149,14 @@
 				Name="VCMIDLTool"
 				MkTypLibCompatible="true"
 				DefaultCharType="2"
-				TypeLibraryName="\Common\include\PdfEnabler.tlb"
+				TypeLibraryName="$(ProjectDir)..\Common\include\PdfEnabler.tlb"
 				OutputDirectory="$(SolutionDir)"
-				HeaderFileName="\Common\include\PdfEnabler_i.h"
-				InterfaceIdentifierFileName="\Common\include\PdfEnabler_i.c"
+				HeaderFileName="$(ProjectDir)..\Common\include\PdfEnabler_i.h"
+				InterfaceIdentifierFileName="$(ProjectDir)..\Common\include\PdfEnabler_i.c"
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="D:\Common\include\pdfEnabler"
+				AdditionalIncludeDirectories="$(ProjectDir)..\Common\include\pdfEnabler"
 				PreprocessorDefinitions="DLLEXPORT=__declspec(dllexport);WIN32;NDEBUG;_WINDOWS;_USRDLL"
 				BufferSecurityCheck="false"
 				EnableFunctionLevelLinking="true"
@@ -579,59 +579,59 @@
 			Filter="h;hpp;hxx;hm;inl"
 			>
 			<File
-				RelativePath="..\Common\include\pdfEnabler\delimiters.h"
+				RelativePath="$(ProjectDir)\..\Common\include\pdfEnabler\delimiters.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Common\include\pdfEnabler\Dictionary.h"
+				RelativePath="$(ProjectDir)\..\Common\include\pdfEnabler\Dictionary.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Common\include\pdfEnabler\Document.h"
+				RelativePath="$(ProjectDir)\..\Common\include\pdfEnabler\Document.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Common\include\pdfEnabler\element.h"
+				RelativePath="$(ProjectDir)\..\Common\include\pdfEnabler\element.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Common\include\pdfEnabler\Encryption.h"
+				RelativePath="$(ProjectDir)\..\Common\include\pdfEnabler\Encryption.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Common\include\pdfEnabler\Encryption_AES_Implementation.h"
+				RelativePath="$(ProjectDir)\..\Common\include\pdfEnabler\Encryption_AES_Implementation.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Common\include\pdfEnabler\entity.h"
+				RelativePath="$(ProjectDir)\..\Common\include\pdfEnabler\entity.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Common\include\pdfEnabler\Library.h"
+				RelativePath="$(ProjectDir)\..\Common\include\pdfEnabler\Library.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Common\include\pdfEnabler\NumberTree.h"
+				RelativePath="$(ProjectDir)\..\Common\include\pdfEnabler\NumberTree.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Common\include\pdfEnabler\Object.h"
+				RelativePath="$(ProjectDir)\..\Common\include\pdfEnabler\Object.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Common\include\pdfEnabler\Page.h"
+				RelativePath="$(ProjectDir)\..\Common\include\pdfEnabler\Page.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Common\include\pdfEnabler\pdfEnabler.h"
+				RelativePath="$(ProjectDir)\..\Common\include\pdfEnabler\pdfEnabler.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Common\include\pdfEnabler\Stream.h"
+				RelativePath="$(ProjectDir)\..\Common\include\pdfEnabler\Stream.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Common\include\pdfEnabler\XReference.h"
+				RelativePath="$(ProjectDir)\..\Common\include\pdfEnabler\XReference.h"
 				>
 			</File>
 		</Filter>

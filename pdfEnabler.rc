@@ -21,7 +21,7 @@ BEGIN
             VALUE "FileDescription", "CursiVision\0"
             VALUE "FileVersion", "3, 0, 1, 1\0"
             VALUE "InternalName", "pdfEnabler.ocx\0"
-            VALUE "LegalCopyright", "Copyright © 2009,2010,2011 InnoVisioNate Inc.\0"
+            VALUE "LegalCopyright", "Copyright © 2009,2010,2011,2012,2013,2014,2015,2016,2017 InnoVisioNate Inc.\0"
             VALUE "LegalTrademarks", "\0"
             VALUE "OriginalFilename", "pdfEnabler.ocx\0"
             VALUE "PrivateBuild", "\0"

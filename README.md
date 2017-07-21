@@ -19,7 +19,7 @@ I've seen, <i>anybody</i> can do better than that.
 
 So, the PdfEnabler project:
 
-The first step is to (of course), instantiate the COM object, CoCreateInstance or your method of choice.
+The first step is to (of course), instantiate the COM object, using CoCreateInstance or your method of choice.
 
 Then, you want to get an overall IPdfDocument interface, which needs the name of the pdf file.
 
@@ -46,6 +46,6 @@ Best approach is too look at the interfaces in the '.odl file.
 This particular project has proven very useful in the CursiVision system. In general, it is a powerful connection between your software,
 and the manipulation of PDF files. There is nothing you can't do in terms of managing PDF with this framework. Granted, it may not currently
 offer exactly the particular thing you want, but you should be able to clearly see the patterns with which this component was developed,
-and through that - and with the supporting functionality already there - add PDF functionality with a minimum of effort.
+and through that - and with the supporting functionality already there - add the desired PDF functionality with a minimum of effort.
 
 

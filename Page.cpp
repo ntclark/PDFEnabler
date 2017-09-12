@@ -147,7 +147,7 @@
          continue;
       }
 
-      long n = strlen((char *)pValue);
+      long n = (long)strlen((char *)pValue);
 
       char *pszCurrentContents = new char[n + 2];
 
@@ -221,7 +221,7 @@
       long objectId = pDocument -> NewObjectId();
       char szObject[MAX_PATH];
       sprintf(szObject,"%ld 0 obj<</AddedStreams cvStreams/entries (|)>>endobj",objectId);
-      pAddedStreamsObject = new PdfObject(pDocument,(BYTE *)szObject,strlen(szObject));
+      pAddedStreamsObject = new PdfObject(pDocument,(BYTE *)szObject,(long)strlen(szObject));
       pDocument -> AddObject(pAddedStreamsObject);
       if ( pDocument -> XReference() )
          pDocument -> XReference() -> AddObject(pAddedStreamsObject);
@@ -231,7 +231,7 @@
    
    BYTE *pValue = pDictionary -> Value("entries");
 
-   long n = strlen((char *)pValue) + 32;
+   long n = (long)strlen((char *)pValue) + 32;
 
    BYTE *pNewValue = new BYTE[n];
 

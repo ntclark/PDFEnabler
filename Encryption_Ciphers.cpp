@@ -30,7 +30,7 @@
 
    */
 
-   long n = strlen(pszPassword);
+   long n = (long)strlen(pszPassword);
 
    memcpy(paddedPassword,pszPassword,min(n,32));
    memcpy(paddedPassword + n,passwordPaddingString,32 - min(n,32));
@@ -151,9 +151,9 @@
 
    */
 
-   long n = strlen(ownerPassword);
+   long n = (long)strlen(ownerPassword);
    if ( ! n ) {
-      n = strlen(userPassword);
+      n = (long)strlen(userPassword);
       memcpy(paddedOwnerPassword,userPassword,min(n,32));
    } else
       memcpy(paddedOwnerPassword,ownerPassword,min(n,32));
@@ -203,7 +203,7 @@
          "Algorithm 2: Computing an encryption key".
    */
 
-   n = strlen(userPassword);
+   n = (long)strlen(userPassword);
    memcpy(paddedUserPassword,userPassword,min(n,32));
    memcpy(paddedUserPassword + n,passwordPaddingString,32 - min(n,32));
 

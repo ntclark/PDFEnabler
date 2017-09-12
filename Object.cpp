@@ -51,7 +51,7 @@
       pEnd--;
 
    if ( pEnd > pStart ) 
-      ReallocateStorage(pStart,pEnd - pStart,Offset() + (pStart - pSourceData));   
+      ReallocateStorage(pStart,(long)(pEnd - pStart),(long)(Offset() + (pStart - pSourceData)));   
 
    bool isArrayObject = false;
    if ( 0 == strncmp((char *)pStart,entityDelimiters[edArray],strlen(entityDelimiters[edArray])) ) 
@@ -142,8 +142,8 @@
    if ( pStart ) {
       pStart = pTop + Offset();
       RETREAT_TO_BOL(pStart,pTop)
-      long preambleLength = pTop + Offset() - pStart;
-      ReallocateStorage(pStart,preambleLength + BinaryDataSize(),pStart - pTop);
+      long preambleLength = (long)(pTop + Offset() - pStart);
+      ReallocateStorage(pStart,preambleLength + BinaryDataSize(),(long)(pStart - pTop));
       sscanf((char *)Storage(),"%ld %ld",&id,&generation);
    }
 
@@ -314,7 +314,7 @@
    pDictionary = NULL;
    BYTE szTemp[32];
    sprintf((char *)szTemp,"%%comment %c",0x0D);
-   ReallocateStorage(szTemp,strlen((char *)szTemp),0);
+   ReallocateStorage(szTemp,(long)strlen((char *)szTemp),0);
    return;
    }
 
@@ -379,7 +379,7 @@
    sprintf(szTemp,"%ld 0 obj",Id());
 #endif
 
-   bytesWritten += ! sizeOnly ? sprintf(pString + bytesWritten,szTemp) : strlen(szTemp);
+   bytesWritten += ! sizeOnly ? (long)sprintf(pString + bytesWritten,szTemp) : (long)strlen(szTemp);
 
    if ( ! pStream ) 
       bytesWritten += PdfEntity::StringWrite(pString + bytesWritten,sizeOnly);
@@ -392,7 +392,7 @@
 
    sprintf(szTemp,"endobj%c",eol);
 
-   bytesWritten += ! sizeOnly ? sprintf(pString + bytesWritten,szTemp) : strlen(szTemp);
+   bytesWritten += ! sizeOnly ? (long)sprintf(pString + bytesWritten,szTemp) : (long)strlen(szTemp);
 
    if ( postAmble ) {
       if ( ! sizeOnly )

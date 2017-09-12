@@ -45,7 +45,7 @@
 
    pEnd++;
 
-   long newSize = pEnd - pStart;
+   long newSize = (long)(pEnd - pStart);
 
    if ( ! newSize )
       return;
@@ -286,7 +286,7 @@
    char szTemp[32];
    sprintf(szTemp,"stream%c%c",0x0D,0x0A);
 
-   long bytesWritten = ! sizeOnly ? sprintf(pString,szTemp) : strlen(szTemp);
+   long bytesWritten = ! sizeOnly ? (long)sprintf(pString,szTemp) : (long)strlen(szTemp);
 
    if ( ! sizeOnly )
       (BYTE *)memcpy((BYTE *)(pString + bytesWritten),Storage(),BinaryDataSize());
@@ -295,14 +295,14 @@
 
    sprintf(szTemp,"%c\nendstream%c",eol,eol);
 
-   bytesWritten += ! sizeOnly ? sprintf(pString + bytesWritten,szTemp) : strlen(szTemp);
+   bytesWritten += ! sizeOnly ? (long)sprintf(pString + bytesWritten,szTemp) : (long)strlen(szTemp);
 
    return bytesWritten;
    }
 
 
    long PdfStream::Write(FILE *fOutput,bool writeUncompressed) {
-   long bytesWritten = fprintf(fOutput,"stream%c%c",0x0D,0x0A);
+   long bytesWritten = (long)fprintf(fOutput,"stream%c%c",0x0D,0x0A);
    if ( writeUncompressed) {
       Decompress();
    }
@@ -312,10 +312,9 @@
    else
       bytesWritten += fwrite(Storage(),BinaryDataSize(),1,fOutput);
 #else
-   bytesWritten += fwrite(Storage(),BinaryDataSize(),1,fOutput);
+   bytesWritten += (long)fwrite(Storage(),BinaryDataSize(),1,fOutput);
 #endif
-   bytesWritten += fprintf(fOutput,"%c\nendstream%c",eol,eol);
-   return bytesWritten;
+   return bytesWritten + (long)fprintf(fOutput,"%c\nendstream%c",eol,eol);
    }
 
 

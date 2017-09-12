@@ -61,12 +61,12 @@
    elementMap.clear();
    elementList.clear();
 
-   long delimiterSize = strlen(entityDelimiters[edDictionary]);
+   long delimiterSize = (long)strlen(entityDelimiters[edDictionary]);
 
    BYTE *pTop = Storage() + delimiterSize;
    BYTE *pFirst = pTop;
 
-   delimiterSize += strlen(entityDelimiters[edDictionary] + delimiterSize + 1);
+   delimiterSize += (long)strlen(entityDelimiters[edDictionary] + delimiterSize + 1);
 
    BYTE *pBottom = pTop + BinaryDataSize() - delimiterSize;
    while ( pBottom > pTop && strncmp(">>",(char *)pBottom,2) )
@@ -262,7 +262,7 @@
 
       BYTE *pParentBytes = Storage();
       BYTE *pElementBytes = pDictionary -> Storage();
-      long nameSize = strlen(pszContainingDictionary);
+      long nameSize = (long)strlen(pszContainingDictionary);
 
       BYTE *pStart = pParentBytes;
       BYTE *pEnd = pParentBytes + BinaryDataSize();
@@ -402,8 +402,8 @@
    if ( pElement )
       totalSize -= pElement -> StringWrite(NULL,true);
 
-   totalSize += strlen(pszKeyName) + strlen(entityDelimiters[edElement]);
-   totalSize += strlen((char *)pszValue) + 1 + crlfSize + 2 * strlen(entityDelimiters[edDictionary]);
+   totalSize += (long)strlen(pszKeyName) + (long)strlen(entityDelimiters[edElement]);
+   totalSize += (long)strlen((char *)pszValue) + 1 + crlfSize + 2 * (long)strlen(entityDelimiters[edDictionary]);
 
    BYTE *pNewData = new BYTE[totalSize + 1];
 
@@ -479,7 +479,7 @@
    char szTemp[32];
    sprintf(szTemp,"%ld%c",newValue,eol);
 
-   pReferencedObject -> ReallocateStorage((BYTE *)szTemp,strlen(szTemp),0);
+   pReferencedObject -> ReallocateStorage((BYTE *)szTemp,(long)strlen(szTemp),0);
 
    return;
    }
@@ -511,13 +511,13 @@
 
    long bytesWritten = 0L;
 
-   bytesWritten += ! sizeOnly ? sprintf(pString,entityDelimiters[edDictionary]) : strlen(entityDelimiters[edDictionary]);
+   bytesWritten += ! sizeOnly ? (long)sprintf(pString,entityDelimiters[edDictionary]) : (long)strlen(entityDelimiters[edDictionary]);
 
    for ( std::list<PdfElement *>::iterator it = elementList.begin(); it != elementList.end(); it++ )
       bytesWritten += (*it) -> StringWrite(pString + bytesWritten,sizeOnly);
 
-   return bytesWritten + ( ! sizeOnly ? sprintf(pString + bytesWritten,"%s",entityDelimiters[edDictionary] + strlen(entityDelimiters[edDictionary]) + 1) : 
-                                       strlen(entityDelimiters[edDictionary] + strlen(entityDelimiters[edDictionary]) + 1) );
+   return bytesWritten + ( ! sizeOnly ? (long)sprintf(pString + bytesWritten,"%s",entityDelimiters[edDictionary] + (long)strlen(entityDelimiters[edDictionary]) + 1) : 
+                                       (long)strlen(entityDelimiters[edDictionary] + (long)strlen(entityDelimiters[edDictionary]) + 1) );
    }
 
 

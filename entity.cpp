@@ -44,14 +44,14 @@
       if ( ! pEnd )
          return;
 
-      dataSize = pStart - pEnd;
+      dataSize = (long)(pStart - pEnd);
    
       pData = new BYTE[dataSize + 1];
       memset(pData,0,(dataSize + 1) * sizeof(BYTE));
 
       memcpy(pData,pEnd,dataSize);
 
-      offset = pEnd - pLast;
+      offset = (long)(pEnd - pLast);
 
       }
       break;
@@ -67,7 +67,7 @@
       pData[dataSize] = '\0';
       memcpy(pData,pTop,dataSize);
 
-      offset = pTop - pStart;
+      offset = (long)(pTop - pStart);
 
       }
       break;
@@ -187,9 +187,7 @@
       return 0;
 #endif
 
-   long bytesWritten = fwrite(pData,printSize,1,fOutput);
-   bytesWritten += fprintf(fOutput,"%c",eol);
-   return bytesWritten;
+   return (long)fwrite(pData,printSize,1,fOutput) + (long)fprintf(fOutput,"%c",eol);
 
 #else
 

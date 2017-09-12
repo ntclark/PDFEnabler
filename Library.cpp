@@ -12,9 +12,9 @@
    BYTE *PdfUtility::ScanObject(EntityDelimiter ed,BYTE *pStart,BYTE *pEnd,long *foundLength) {
 
    char *pStartDelimiter = entityDelimiters[ed];
-   long startLen = strlen(pStartDelimiter);
+   long startLen = (long)strlen(pStartDelimiter);
    char *pEndDelimiter = pStartDelimiter + startLen + 1;
-   long endLen = strlen(pEndDelimiter);
+   long endLen = (long)strlen(pEndDelimiter);
 
    *foundLength = 0;
 
@@ -80,7 +80,7 @@
 
    }
 
-   *foundLength = p + endLen - pFoundStart;
+   *foundLength = (long)(p + endLen - pFoundStart);
 
    return pFoundStart;
    }
@@ -94,14 +94,14 @@
    long otherLen = 0;
    if ( edeStart == ede ) {
       pDelimiter = entityDelimiters[ed];
-      len = strlen(pDelimiter);
+      len = (long)strlen(pDelimiter);
       pOtherDelimiter = pDelimiter + len + 1;
-      otherLen = strlen(pOtherDelimiter);
+      otherLen = (long)strlen(pOtherDelimiter);
    } else {
       pOtherDelimiter = entityDelimiters[ed];
-      otherLen = strlen(pOtherDelimiter);
+      otherLen = (long)strlen(pOtherDelimiter);
       pDelimiter = pOtherDelimiter + otherLen + 1;
-      len = strlen(pDelimiter);
+      len = (long)strlen(pDelimiter);
    }
 
    BYTE *p = pStart;
@@ -120,13 +120,13 @@
       } else {
 
          char *pDictionaryStart = entityDelimiters[edDictionary];
-         long dictionaryStartLen = strlen(pDictionaryStart);
+         long dictionaryStartLen = (long)strlen(pDictionaryStart);
          char *pDictionaryEnd = entityDelimiters[edDictionary] + dictionaryStartLen + 1;
-         long dictionaryEndLen = strlen(pDictionaryEnd);
+         long dictionaryEndLen = (long)strlen(pDictionaryEnd);
          char *pArrayStart = entityDelimiters[edArray];
-         char arrayStartLen = strlen(pArrayStart);
+         long arrayStartLen = (long)strlen(pArrayStart);
          char *pArrayEnd = entityDelimiters[edArray] + arrayStartLen + 1;
-         long arrayEndLen = strlen(pArrayEnd);
+         long arrayEndLen = (long)strlen(pArrayEnd);
 
          long nDictionary = 0;
          long nArray = 0;
@@ -243,7 +243,7 @@ return NULL;
    long PdfUtility::HashCode(char *pszInput) {
    long hashCode = 0L;
    long part = 0L;
-   long n = strlen(pszInput);
+   long n = (long)strlen(pszInput);
    char *psz = new char[n + 4];
    memset(psz,0,(n + 4) * sizeof(char));
    strcpy(psz,pszInput);
@@ -476,7 +476,7 @@ return NULL;
 
    void PdfUtility::ASCIIHexDecodeInPlace(char *pszInput) {
 
-   long n = strlen(pszInput);
+   long n = (long)strlen(pszInput);
 
    long j = 0;
 
@@ -652,7 +652,7 @@ wxPdfTokenizer::GetHex(int v)
 
    bool PdfUtility::IsIndirect(char *pszReference) {
 
-   long n = strlen(pszReference);
+   long n = (long)strlen(pszReference);
 
    char *pszCopy = new char[n + 1];
    memset(pszCopy,0,(n + 1) * sizeof(char));
@@ -718,7 +718,7 @@ wxPdfTokenizer::GetHex(int v)
 
    static BYTE szCurrentContents[1024];
 
-   long n = strlen((char *)pCurrentValue);
+   long n = (long)strlen((char *)pCurrentValue);
 
    memset(szCurrentContents,0,sizeof(szCurrentContents));
 
@@ -788,7 +788,7 @@ wxPdfTokenizer::GetHex(int v)
 
    static BYTE szCurrentContents[1024];
 
-   long n = strlen((char *)pCurrentValue);
+   long n = (long)strlen((char *)pCurrentValue);
 
    memset(szCurrentContents,0,sizeof(szCurrentContents));
 

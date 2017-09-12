@@ -289,7 +289,7 @@
    
             streamLength = pObjectStream -> Stream() -> BinaryDataSize();
    
-            long n = strlen((char *)pStreamUncompressedData);
+            long n = (long)strlen((char *)pStreamUncompressedData);
             char *pArray = new char[n + 1];
             strcpy(pArray,(char *)pStreamUncompressedData);
 
@@ -327,7 +327,7 @@
    
       pXRefStreamObject -> initialSizeValue = atol((char *)pXRefStreamObject -> pObject -> Value("Size"));
 
-      pXRefStreamObject -> initialEntriesCount = pXRefStreamObject -> entries.size();
+      pXRefStreamObject -> initialEntriesCount = (long)pXRefStreamObject -> entries.size();
    
       delete [] pWArray;
 

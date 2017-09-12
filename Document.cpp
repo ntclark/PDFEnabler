@@ -100,14 +100,14 @@
 
       RETREAT_TO_BOL(p,pStart)
 
-      PdfObject *pObject = new PdfObject(this,p,entityLength + pObjectData - p);
+      PdfObject *pObject = new PdfObject(this,p,(long)(entityLength + pObjectData - p));
 
-      pObject -> FileOffset(p - pData);
+      pObject -> FileOffset((long)(p - pData));
 
       AddObject(pObject);
 
       if ( ! preambleLength ) 
-         preambleLength = p - pStart;
+         preambleLength = (long)(p - pStart);
 
       pStart = pObjectData + entityLength;
 
@@ -441,7 +441,7 @@
 
    PdfObject *PdfDocument::IndirectObject(char *pszObjectReference) {
 
-   long n = strlen(pszObjectReference);
+   long n = (long)strlen(pszObjectReference);
 
    char *pszCopy = new char[n + 1];
    memset(pszCopy,0,(n + 1) * sizeof(char));
@@ -567,7 +567,7 @@
    
       long streamLength = pStream -> BinaryDataSize();
    
-      long n = strlen((char *)pStreamUncompressedData);
+      long n = (long)strlen((char *)pStreamUncompressedData);
       char *pArray = new char[n + 1];
       strcpy(pArray,(char *)pStreamUncompressedData);
 
@@ -767,7 +767,7 @@
       long objectId = NewObjectId();
       char szObject[MAX_PATH];
       sprintf(szObject,"%ld 0 obj<</%s 0>>endobj",objectId,pszCounterName);
-      pObject = new PdfObject(this,(BYTE *)szObject,strlen(szObject));
+      pObject = new PdfObject(this,(BYTE *)szObject,(long)strlen(szObject));
       AddObject(pObject);
       if ( XReference() )
          XReference() -> AddObject(pObject);
@@ -790,7 +790,7 @@
       long objectId = NewObjectId();
       char szObject[MAX_PATH];
       sprintf(szObject,"%ld 0 obj<</%s 1>>endobj",objectId,pszCounterName);
-      pObject = new PdfObject(this,(BYTE *)szObject,strlen(szObject));
+      pObject = new PdfObject(this,(BYTE *)szObject,(long)strlen(szObject));
       AddObject(pObject);
       if ( XReference() )
          XReference() -> AddObject(pObject);

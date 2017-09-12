@@ -288,7 +288,7 @@
    if ( pSource > pEnd )
       pTarget -= (pSource - pEnd);
 
-   long sizeLeft = pTarget - pDeflatorInput;
+   long sizeLeft = (long)(pTarget - pDeflatorInput);
 
    long rc = deflate(pDeflatorInput,sizeLeft,ppResult);
 
@@ -445,7 +445,7 @@
    delete [] pDeflatorOutput;
    delete [] pPriorRow;
 
-   return pOutput - pOutputStart;
+   return (long)(pOutput - pOutputStart);
    }
 
 

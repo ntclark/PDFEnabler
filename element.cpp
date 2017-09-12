@@ -54,7 +54,7 @@
       BYTE *pAfterValue = pdfUtility.ScanDelimiter(edElement,esdScanDown,edeStart,pNext + 1,pLast);
 
       if ( pAfterValue )
-         valueSize = pAfterValue - pNext - 1;
+         valueSize = (long)(pAfterValue - pNext - 1);
       else {
          BYTE *pTest = p + 1;
          valueSize = 0;
@@ -75,7 +75,7 @@
          }
       }
 
-      long extendBytes = p - (pStart + Offset() + strlen(szName)) + valueSize;
+      long extendBytes = (long)(p - (pStart + Offset() + (long)strlen(szName)) + valueSize);
 
       ReallocateStorage(pStart + Offset(),BinaryDataSize() + extendBytes,Offset());
 
@@ -83,7 +83,7 @@
 
    } else {
 
-      ReallocateStorage(pStart + Offset(),pNext - (pStart + Offset()),Offset());
+      ReallocateStorage(pStart + Offset(),(long)(pNext - (pStart + Offset())),Offset());
 
       pValue = Storage() + strlen(entityDelimiters[edElement]) + strlen(szName);
 
@@ -95,13 +95,13 @@
       whiteSpace++;
    }
 
-   valueSize = (BYTE *)(Storage() + BinaryDataSize()) - pValue;
+   valueSize = (long)((BYTE *)(Storage() + BinaryDataSize()) - pValue);
 
    BYTE *pEnd = pValue + valueSize - 1;
    while ( pEnd > pValue && ( 0x0A == *pEnd || 0x0D == *pEnd ) )
       pEnd--;
 
-   valueSize = pEnd - pValue + 1;
+   valueSize = (long)(pEnd - pValue + 1);
 
    /*
       A string object shall consist of a series of zero or more bytes. 
@@ -168,7 +168,7 @@
       while ( pEnd > pValue && ( 0x0A == *pEnd || 0x0D == *pEnd ) )
          pEnd--;
 
-      valueSize = pEnd - pValue + 1;
+      valueSize = (long)(pEnd - pValue + 1);
 
       pDictionary = new PdfDictionary(pParentDictionary -> Object(),pValue,valueSize);
 
@@ -224,17 +224,17 @@
 
    case vtString:
 
-      bytesWritten += ! sizeOnly ? sprintf(pString + bytesWritten,"/") : 1;
-      bytesWritten += ! sizeOnly ? sprintf(pString + bytesWritten,szName) : strlen(szName);
-      bytesWritten += ! sizeOnly ? sprintf(pString + bytesWritten,entityDelimiters[edString]) : strlen(entityDelimiters[edString]);
+      bytesWritten += ! sizeOnly ? (long)sprintf(pString + bytesWritten,"/") : 1;
+      bytesWritten += ! sizeOnly ? (long)sprintf(pString + bytesWritten,szName) : (long)strlen(szName);
+      bytesWritten += ! sizeOnly ? (long)sprintf(pString + bytesWritten,entityDelimiters[edString]) : (long)strlen(entityDelimiters[edString]);
       if ( vstUnicode == vst ) {
          if ( ! sizeOnly )
             (BYTE *)memcpy((BYTE *)(pString + bytesWritten),pValue,valueSize);
          bytesWritten += valueSize;
       } else
-         bytesWritten += ! sizeOnly ? sprintf(pString + bytesWritten,(char *)pValue) : strlen((char *)pValue);
+         bytesWritten += ! sizeOnly ? (long)sprintf(pString + bytesWritten,(char *)pValue) : (long)strlen((char *)pValue);
 
-      bytesWritten += ! sizeOnly ? sprintf(pString + bytesWritten,entityDelimiters[edString] + strlen(entityDelimiters[edString]) + 1) : strlen(entityDelimiters[edString] + strlen(entityDelimiters[edString]) + 1);
+      bytesWritten += ! sizeOnly ? (long)sprintf(pString + bytesWritten,entityDelimiters[edString] + (long)strlen(entityDelimiters[edString]) + 1) : (long)strlen(entityDelimiters[edString] + (long)strlen(entityDelimiters[edString]) + 1);
 
       break;
 
@@ -242,24 +242,24 @@
 
       char *pszEncoded;
 
-      bytesWritten += ! sizeOnly ? sprintf(pString + bytesWritten,"/") : 1;
-      bytesWritten += ! sizeOnly ? sprintf(pString + bytesWritten,szName) : strlen(szName);
-      bytesWritten += ! sizeOnly ? sprintf(pString + bytesWritten,entityDelimiters[edHexEncodedString]) : strlen(entityDelimiters[edHexEncodedString]);
+      bytesWritten += ! sizeOnly ? (long)sprintf(pString + bytesWritten,"/") : 1;
+      bytesWritten += ! sizeOnly ? (long)sprintf(pString + bytesWritten,szName) : (long)strlen(szName);
+      bytesWritten += ! sizeOnly ? (long)sprintf(pString + bytesWritten,entityDelimiters[edHexEncodedString]) : (long)strlen(entityDelimiters[edHexEncodedString]);
 
       pdfUtility.ASCIIHexEncode((char *)pValue,valueSize,&pszEncoded);
 
-      bytesWritten += ! sizeOnly ? sprintf(pString + bytesWritten,pszEncoded) : strlen(pszEncoded);
+      bytesWritten += ! sizeOnly ? (long)sprintf(pString + bytesWritten,pszEncoded) : (long)strlen(pszEncoded);
 
       delete [] pszEncoded;
 
-      bytesWritten += ! sizeOnly ? sprintf(pString + bytesWritten,entityDelimiters[edHexEncodedString] + strlen(entityDelimiters[edHexEncodedString]) + 1) : 
-                           strlen(entityDelimiters[edHexEncodedString] + strlen(entityDelimiters[edHexEncodedString]) + 1);
+      bytesWritten += ! sizeOnly ? (long)sprintf(pString + bytesWritten,entityDelimiters[edHexEncodedString] + (long)strlen(entityDelimiters[edHexEncodedString]) + 1) : 
+                           (long)strlen(entityDelimiters[edHexEncodedString] + (long)strlen(entityDelimiters[edHexEncodedString]) + 1);
       break;
 
    case vtDictionary:
 
-      bytesWritten += ! sizeOnly ? sprintf(pString + bytesWritten,"/") : 1;
-      bytesWritten += ! sizeOnly ? sprintf(pString + bytesWritten,szName) : strlen(szName);
+      bytesWritten += ! sizeOnly ? (long)sprintf(pString + bytesWritten,"/") : 1;
+      bytesWritten += ! sizeOnly ? (long)sprintf(pString + bytesWritten,szName) : (long)strlen(szName);
       bytesWritten += pDictionary -> StringWrite(pString + bytesWritten,sizeOnly);
       break;
 
@@ -284,32 +284,32 @@
 
    case vtString:
 
-      bytesWritten += fwrite("/",1,1,fOutput);
-      bytesWritten += fwrite(szName,1,strlen(szName),fOutput);
-      bytesWritten += fwrite(entityDelimiters[edString],1,strlen(entityDelimiters[edString]),fOutput);
+      bytesWritten += (long)fwrite("/",1,1,fOutput);
+      bytesWritten += (long)fwrite(szName,1,strlen(szName),fOutput);
+      bytesWritten += (long)fwrite(entityDelimiters[edString],1,strlen(entityDelimiters[edString]),fOutput);
       if ( vstUnicode == vst )
-         bytesWritten += fwrite(pValue,valueSize,1,fOutput);
+         bytesWritten += (long)fwrite(pValue,valueSize,1,fOutput);
       else
-         bytesWritten += fprintf(fOutput,"%s",pValue);
-      bytesWritten += fwrite(entityDelimiters[edString] + strlen(entityDelimiters[edString]) + 1,1,
-                                 strlen(entityDelimiters[edString] + strlen(entityDelimiters[edString]) + 1),fOutput);
+         bytesWritten += (long)fprintf(fOutput,"%s",pValue);
+      bytesWritten += (long)fwrite(entityDelimiters[edString] + strlen(entityDelimiters[edString]) + 1,1,
+                                       strlen(entityDelimiters[edString] + strlen(entityDelimiters[edString]) + 1),fOutput);
       break;
 
    case vtHexEncodedString:
 
       char *pszEncoded;
 
-      bytesWritten += fwrite("/",1,1,fOutput);
-      bytesWritten += fwrite(szName,1,strlen(szName),fOutput);
-      bytesWritten += fwrite(entityDelimiters[edHexEncodedString],1,strlen(entityDelimiters[edHexEncodedString]),fOutput);
+      bytesWritten += (long)fwrite("/",1,1,fOutput);
+      bytesWritten += (long)fwrite(szName,1,strlen(szName),fOutput);
+      bytesWritten += (long)fwrite(entityDelimiters[edHexEncodedString],1,strlen(entityDelimiters[edHexEncodedString]),fOutput);
 
       pdfUtility.ASCIIHexEncode((char *)pValue,valueSize,&pszEncoded);
 
-      bytesWritten += fprintf(fOutput,"%s",pszEncoded);
+      bytesWritten += (long)fprintf(fOutput,"%s",pszEncoded);
 
       delete [] pszEncoded;
 
-      bytesWritten += fwrite(entityDelimiters[edHexEncodedString] + strlen(entityDelimiters[edHexEncodedString]) + 1,1,
+      bytesWritten += (long)fwrite(entityDelimiters[edHexEncodedString] + strlen(entityDelimiters[edHexEncodedString]) + 1,1,
                                  strlen(entityDelimiters[edHexEncodedString] + strlen(entityDelimiters[edHexEncodedString]) + 1),fOutput);
       break;
 
@@ -322,8 +322,8 @@
 
 #endif
 
-      bytesWritten += fwrite("/",1,1,fOutput);
-      bytesWritten += fwrite(szName,1,strlen(szName),fOutput);
+      bytesWritten += (long)fwrite("/",1,1,fOutput);
+      bytesWritten += (long)fwrite(szName,1,strlen(szName),fOutput);
       bytesWritten += pDictionary -> Write(fOutput);
       break;
 
@@ -359,7 +359,7 @@
 
 #endif
 
-      return fwrite(Storage(),1,BinaryDataSize(),fOutput);
+      return (long)fwrite(Storage(),1,BinaryDataSize(),fOutput);
 
 #else
       bytesWritten += fwrite("/",1,1,fOutput);

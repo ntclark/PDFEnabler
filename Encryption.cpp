@@ -83,7 +83,7 @@
 
    strcpy(szDocumentId,(char *)pDocumentId);
 
-   documentIdLength = strlen(szDocumentId);
+   documentIdLength = (long)strlen(szDocumentId);
 
    pdfUtility.ASCIIHexDecodeInPlace(szDocumentId);
 
@@ -631,21 +631,18 @@ return;
 
    void PdfEncryption::RC4(unsigned char* key, long keylen,unsigned char* textin, long textlen,unsigned char* textout) {
 
-   int i;
-   int j;
-   int t;
-
    unsigned char rc4[256];
 
-   for ( long k = 0; k < 256; k++ ) {
+   for ( unsigned char k = 0; k < 256; k++ ) 
       rc4[k] = k;
-   }
 
-   j = 0;
-   for ( i = 0; i < 256; i++ ) {
-      t = rc4[i];
-      j = (j + t + key[i % keylen]) % 256;
-      rc4[i] = rc4[j];
+   int j = 0;
+   int t = 0;
+
+   for ( int k = 0; k < 256; k++ ) {
+      t = rc4[k];
+      j = (j + t + key[k % keylen]) % 256;
+      rc4[k] = rc4[j];
       rc4[j] = t;
    }
 
@@ -654,7 +651,7 @@ return;
 
    unsigned char uc;
 
-   for ( i = 0; i < textlen; i++ ) {
+   for ( int k = 0; k < textlen; k++ ) {
 
       a = (a + 1) % 256;
 
@@ -668,7 +665,7 @@ return;
 
       uc = rc4[(rc4[a] + rc4[b]) % 256];
 
-      textout[i] = textin[i] ^ uc;
+      textout[k] = textin[k] ^ uc;
 
    }
 

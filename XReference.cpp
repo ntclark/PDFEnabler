@@ -496,7 +496,7 @@
 
             xrefEntrySection *pSection = (*itSection);
 
-            fprintf(fOutput,"%ld %ld%c\n",pSection -> firstObjectId,pSection -> entries.size(),eol);
+            fprintf(fOutput,"%ld %zd%c\n",pSection -> firstObjectId,pSection -> entries.size(),eol);
 
          /*
             A given object number shall not have an entry in more than one subsection within a single section.

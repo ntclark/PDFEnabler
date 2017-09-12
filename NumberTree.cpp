@@ -19,7 +19,7 @@ static char RomanNumerals[][8] = {"","I","II","III","IV","V","VI","VII","VIII","
    if ( ! pEntry )
       return;
 
-   long n = 4 * strlen((char *)pEntry) + 1;
+   long n = 4 * (long)strlen((char *)pEntry) + 1;
 
    char *pTreeEntries = new char[n];
 
@@ -159,7 +159,7 @@ static char RomanNumerals[][8] = {"","I","II","III","IV","V","VI","VII","VIII","
 
    std::list<long>::iterator iIndexes = rangeIndexes.begin();
 
-   long maxIndex = rangeDictionaries.size() - 1;
+   long maxIndex = (long)rangeDictionaries.size() - 1;
    long thisIndex = 0;
 
    for ( std::list<PdfDictionary *>::iterator it = rangeDictionaries.begin();

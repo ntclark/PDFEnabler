@@ -214,7 +214,7 @@
       long objectId = NewObjectId();
       char szObject[MAX_PATH];
       sprintf(szObject,"%ld 0 obj<</CounterObject %s/count %ld/maxCount %ld>>endobj",objectId,szTemp,currentCount,maxCount);
-      pObject = new PdfObject(this,(BYTE *)szObject,strlen(szObject));
+      pObject = new PdfObject(this,(BYTE *)szObject,(long)strlen(szObject));
       AddObject(pObject);
       if ( XReference() )
          XReference() -> AddObject(pObject);
@@ -624,7 +624,7 @@
       long objectId = NewObjectId();
       char szObject[MAX_PATH];
       sprintf(szObject,"%ld 0 obj<</%s []>>endobj",objectId,pszStreamList);
-      pAddedStreamList = new PdfObject(this,(BYTE *)szObject,strlen(szObject));
+      pAddedStreamList = new PdfObject(this,(BYTE *)szObject,(long)strlen(szObject));
       AddObject(pAddedStreamList);
       if ( XReference() )
          XReference() -> AddObject(pAddedStreamList);
@@ -698,7 +698,7 @@
       long objectId = NewObjectId();
       char szObject[MAX_PATH];
       sprintf(szObject,"%ld 0 obj<</AddedStreams cvStreams/entries (|)>>endobj",objectId);
-      pObject = new PdfObject(this,(BYTE *)szObject,strlen(szObject));
+      pObject = new PdfObject(this,(BYTE *)szObject,(long)strlen(szObject));
       AddObject(pObject);
       if ( XReference() )
          XReference() -> AddObject(pObject);
@@ -792,7 +792,7 @@
                NewObjectId(),(double)(pageSize.right - pageSize.left),(double)(pageSize.bottom - pageSize.top),
                         (double)(pageSize.right - pageSize.left),(double)(pageSize.bottom - pageSize.top),(char *)parentReference,rotation);
 
-   PdfObject *pNewPageObject = new PdfObject(this,(BYTE *)szTemp,strlen(szTemp));
+   PdfObject *pNewPageObject = new PdfObject(this,(BYTE *)szTemp,(long)strlen(szTemp));
 
    AddObject(pNewPageObject);
 
@@ -912,7 +912,7 @@
 
    sprintf((char *)pTarget + n," Q ");
 
-   long streamLength = strlen((char *)pNewStream);
+   long streamLength = (long)strlen((char *)pNewStream);
 
    BYTE *pNewObject = new BYTE[streamLength + 256];
 
@@ -924,7 +924,7 @@
 
    sprintf((char *)pNewObject + strlen((char *)pNewObject),"\nendstream\nendobj\n");
 
-   streamLength = strlen((char *)pNewObject);
+   streamLength = (long)strlen((char *)pNewObject);
 
    long objectId = NewObjectId();
 
@@ -1080,7 +1080,7 @@
 
       fclose(fFont);
 
-      int n = strlen(szFileName);
+      int n = (long)strlen(szFileName);
 
       char *pNewName = new char[n + 3];
 
@@ -1101,7 +1101,7 @@
 
       strcpy(pNames + namesSize,pNewName);
 
-      namesSize += strlen(pNewName) + 1;
+      namesSize += (long)strlen(pNewName) + 1;
 
       pNames[namesSize] = '\0';
 

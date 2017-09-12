@@ -402,7 +402,7 @@
                         It shall be equivalent to the Size entry in a trailer dictionary.
       */
 
-      sprintf(szTemp,"%ld",pXRefStreamObject -> initialSizeValue + pXRefStreamObject -> entries.size() - pXRefStreamObject -> initialEntriesCount);
+      sprintf(szTemp,"%ld",pXRefStreamObject -> initialSizeValue + (long)pXRefStreamObject -> entries.size() - pXRefStreamObject -> initialEntriesCount);
 
       pDictionary -> SetValue("Size",(BYTE *)szTemp);
 

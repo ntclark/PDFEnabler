@@ -275,9 +275,9 @@
    sprintf(szContent,"q\n1 0 0 1 %ld %ld cm\n%lf 0 0 %lf 0 0 cm\n%s Do\nQ\n",x,y,(double)bitmapWidth * scaleX,(double)bitmapHeight * scaleY,szImageName);
 
    sprintf(szStream,"%ld 0 obj<</BBox[0.0 0.0 %ld %ld]/FormType 1/Length %ld/Matrix[1.0 0.0 0.0 1.0 0.0 0.0]/Resources<</ProcSet[/PDF]/XObject<<%s %ld 0 R>>>>/Subtype/Form/Type/XObject>>\n"
-                              "stream\n%s\nendstream\nendobj",pDocument -> NewObjectId(),bitmapWidth,bitmapHeight,strlen(szContent),szImageName,objectId,szContent);
+                              "stream\n%s\nendstream\nendobj",pDocument -> NewObjectId(),bitmapWidth,bitmapHeight,(long)strlen(szContent),szImageName,objectId,szContent);
 
-   PdfObject *pRenderObject = new PdfObject(pDocument,(BYTE *)szStream,strlen(szStream));
+   PdfObject *pRenderObject = new PdfObject(pDocument,(BYTE *)szStream,(long)strlen(szStream));
 
    pDocument -> AddObject(pRenderObject);
 

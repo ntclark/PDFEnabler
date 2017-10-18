@@ -204,7 +204,8 @@ regsvr32 /s /c "$(TargetPath)"</Command>
       <OutputFile>.\Debug/PdfEnabler.bsc</OutputFile>
     </Bscmake>
     <PostBuildEvent>
-      <Command>copy "$(TargetPath)" "$(OutDir)$(TargetName).dll"</Command>
+      <Command>copy "$(TargetPath)" "$(OutDir)$(TargetName).dll"
+regsvr32 /s /c "$(TargetPath)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

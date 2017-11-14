@@ -166,7 +166,7 @@
 
       */
 
-      for ( std::list<xrefEntry *>::iterator itEntry = pXRefStreamObject -> entries.begin(); itEntry != pXRefStreamObject -> entries.end(); itEntry++ ) {
+      for ( xrefEntry *pe : pXRefStreamObject -> entries ) {
 
          /*
             Table 18 – Entries in a cross-reference stream
@@ -174,8 +174,6 @@
             Type  Field Description
 
          */
-
-         xrefEntry *pe = (*itEntry);
 
          switch ( pe -> type ) {
 
@@ -280,9 +278,19 @@
 
 #else
 
+//
+//NTC: 11-11-2017: Somehow pe -> pObject is NULL when signing an IRS 1040.
+// Today I put in this protection against that, and the resulting signed PDF document
+// seems to be fine. 
+// However, I'm not entirely convinced that the reason why pe -> pObject is NULL and that
+// it may indicate a problem somewhere else.
+//
+
+if ( pe -> pObject ) {
             totalMotion += abs(pe -> fileOffset - pe -> pObject -> FileOffset());
             pe -> fileOffset = pe -> pObject -> FileOffset();
             pe -> generationNumber = pe -> pObject -> Generation();
+}
 
 #endif
 

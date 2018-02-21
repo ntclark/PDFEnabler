@@ -105,7 +105,7 @@
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>DLLEXPORT=__declspec(dllexport);WIN32;DEBUG;_DEBUG;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DLLEXPORT=__declspec(dllexport);WIN32;DEBUG;_DEBUG;_WINDOWS;_USRDLL;ZLIB_WINAPI;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Sync</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <BufferSecurityCheck>false</BufferSecurityCheck>
@@ -126,7 +126,7 @@
       <AdditionalIncludeDirectories>$(ProjectDir)\..\Common\include\</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>natezlib.lib;gdiplus.lib;ws2_32.lib;shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>zlibwapi.lib;gdiplus.lib;ws2_32.lib;shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <EnableUAC>false</EnableUAC>
       <ModuleDefinitionFile>pdfEnabler.def</ModuleDefinitionFile>
@@ -164,7 +164,7 @@ regsvr32 /s /c "$(TargetPath)"</Command>
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>DLLEXPORT=__declspec(dllexport);WIN32;DEBUG;_DEBUG;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DLLEXPORT=__declspec(dllexport);WIN32;DEBUG;_DEBUG;_WINDOWS;_USRDLL;ZLIB_WINAPI;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Sync</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <BufferSecurityCheck>false</BufferSecurityCheck>
@@ -185,7 +185,7 @@ regsvr32 /s /c "$(TargetPath)"</Command>
       <AdditionalIncludeDirectories>$(ProjectDir)\..\Common\include\</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>natezlib.lib;gdiplus.lib;ws2_32.lib;shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>zlibwapi.lib;gdiplus.lib;ws2_32.lib;shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <EnableUAC>false</EnableUAC>
       <ModuleDefinitionFile>pdfEnabler.def</ModuleDefinitionFile>
@@ -216,13 +216,13 @@ regsvr32 /s /c "$(TargetPath)"</Command>
     </Midl>
     <ClCompile>
       <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>DLLEXPORT=__declspec(dllexport);WIN32;NDEBUG;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DLLEXPORT=__declspec(dllexport);WIN32;NDEBUG;_WINDOWS;_USRDLL;ZLIB_WINAPI;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <FunctionLevelLinking>true</FunctionLevelLinking>
     </ClCompile>
     <Link>
       <AdditionalOptions>/DLL %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalDependencies>natezlib.lib;gdiplus.lib;ws2_32.lib;shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>zlibwapi.lib;gdiplus.lib;ws2_32.lib;shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <EnableUAC>false</EnableUAC>
       <ModuleDefinitionFile>pdfEnabler.def</ModuleDefinitionFile>
       <TargetMachine>MachineX86</TargetMachine>
@@ -244,13 +244,13 @@ regsvr32 /s /c "$(TargetPath)"</Command>
     </Midl>
     <ClCompile>
       <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>DLLEXPORT=__declspec(dllexport);WIN32;NDEBUG;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DLLEXPORT=__declspec(dllexport);WIN32;NDEBUG;_WINDOWS;_USRDLL;ZLIB_WINAPI;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <FunctionLevelLinking>true</FunctionLevelLinking>
     </ClCompile>
     <Link>
       <AdditionalOptions>/DLL %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalDependencies>natezlib.lib;gdiplus.lib;ws2_32.lib;shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>zlibwapi.lib;gdiplus.lib;ws2_32.lib;shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <EnableUAC>false</EnableUAC>
       <ModuleDefinitionFile>pdfEnabler.def</ModuleDefinitionFile>
       <ImportLibrary>\Common\lib\$(Platform)\$(TargetName).lib</ImportLibrary>

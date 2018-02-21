@@ -4,7 +4,8 @@
 
 #include "Library.h"
 #include <math.h>
-#include "natezlib\zlib.h"
+
+#include "zlib.h"
 
    long PdfUtility::deflate(BYTE *pInitialSource,long initialSize,BYTE **ppResult,
                                  long predictor,long columns,long bitsPerComponent,long componentsPerSample) {

@@ -2,22 +2,12 @@
 Integrate powerful PDF manipulation tools into just about anything
 
 First, see the comments on the Common repository, to recap:
-    1. Clone them all
-    2. ... in a place where they are siblings
+    1. Clone Common
+    2. In a place where they are siblings
+    3. Pay attention to the use of the GSYSTEM_HOME environment variable described in the Common repository
     
 PDFEnabler is a COM object. One significant aspect of this project is that it demonstrates the power of RAW COM, this time without 
 ALL the CRUD associated with MFC or ATL implementations of the same.
-
-To see COM in it's utter simplicity, look here. Otherwise, you can rely on MFC or ATL - and be forever stuck in a) a restrictive 
-"one size fits all" strategy that forces your hand in every thing you do (and which is poorly written, as you can see if you debug 
-into it's code), or b) swim in a sea of inane macro definitions that you have to somehow get exactly right. God forbid, you need 
-to extend you're capabilities, IF you can find the right macro, then MAYBE you can see what you need to do.
-
-Have confidence in your understanding of how C++ works - you are <i>just</i> as good at what you do as those that put these tools 
-right smack in your way. Just because MS or DB isn't your employer, does NOT mean that you can't do better than them. And, from what
-I've seen, <i>anybody</i> can do better than that.
-
-So, the PdfEnabler project:
 
 The first step is to (of course), instantiate the COM object, using CoCreateInstance or your method of choice.
 

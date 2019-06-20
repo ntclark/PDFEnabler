@@ -117,46 +117,46 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="$(ProjectDir)\..\Common\include\pdfEnabler\delimiters.h">
+    <ClInclude Include="$(GSYSTEM_HOME)\Common\include\pdfEnabler\delimiters.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="$(ProjectDir)\..\Common\include\pdfEnabler\Dictionary.h">
+    <ClInclude Include="$(GSYSTEM_HOME)\Common\include\pdfEnabler\Dictionary.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="$(ProjectDir)\..\Common\include\pdfEnabler\Document.h">
+    <ClInclude Include="$(GSYSTEM_HOME)\Common\include\pdfEnabler\Document.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="$(ProjectDir)\..\Common\include\pdfEnabler\element.h">
+    <ClInclude Include="$(GSYSTEM_HOME)\Common\include\pdfEnabler\element.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="$(ProjectDir)\..\Common\include\pdfEnabler\Encryption.h">
+    <ClInclude Include="$(GSYSTEM_HOME)\Common\include\pdfEnabler\Encryption.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="$(ProjectDir)\..\Common\include\pdfEnabler\Encryption_AES_Implementation.h">
+    <ClInclude Include="$(GSYSTEM_HOME)\Common\include\pdfEnabler\Encryption_AES_Implementation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="$(ProjectDir)\..\Common\include\pdfEnabler\entity.h">
+    <ClInclude Include="$(GSYSTEM_HOME)\Common\include\pdfEnabler\entity.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="$(ProjectDir)\..\Common\include\pdfEnabler\Library.h">
+    <ClInclude Include="$(GSYSTEM_HOME)\Common\include\pdfEnabler\Library.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="$(ProjectDir)\..\Common\include\pdfEnabler\NumberTree.h">
+    <ClInclude Include="$(GSYSTEM_HOME)\Common\include\pdfEnabler\NumberTree.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="$(ProjectDir)\..\Common\include\pdfEnabler\Object.h">
+    <ClInclude Include="$(GSYSTEM_HOME)\Common\include\pdfEnabler\Object.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="$(ProjectDir)\..\Common\include\pdfEnabler\Page.h">
+    <ClInclude Include="$(GSYSTEM_HOME)\Common\include\pdfEnabler\Page.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="$(ProjectDir)\..\Common\include\pdfEnabler\pdfEnabler.h">
+    <ClInclude Include="$(GSYSTEM_HOME)\Common\include\pdfEnabler\pdfEnabler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="$(ProjectDir)\..\Common\include\pdfEnabler\Stream.h">
+    <ClInclude Include="$(GSYSTEM_HOME)\Common\include\pdfEnabler\Stream.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="$(ProjectDir)\..\Common\include\pdfEnabler\XReference.h">
+    <ClInclude Include="$(GSYSTEM_HOME)\Common\include\pdfEnabler\XReference.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
